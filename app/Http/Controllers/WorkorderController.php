@@ -12,7 +12,9 @@ class WorkorderController extends Controller
      */
     public function index($status = 'open')
     {
-        return view('workorders.index', compact('status'));
+        $workorders = Workorder::where('status', $status)->get();
+
+        return view('workorders.index', compact('workorders', 'status'));
     }
 
     /**

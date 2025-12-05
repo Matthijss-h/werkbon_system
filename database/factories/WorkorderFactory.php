@@ -17,7 +17,13 @@ class WorkorderFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'employee_name' => $this->faker->name(),
+            'description' => $this->faker->paragraph(),
+            'start' => $this->faker->date(),
+            'end' => $this->faker->date(),
+            'status' => $this->faker->randomElement(['open', 'closed']),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('workorders', function (Blueprint $table) {
             $table->id();
+            $table->string('employee_name');
+            $table->text('description');
+            $table->string('status');
+            $table->date('start');
+            $table->date('end');
             $table->timestamps();
-            
         });
     }
 

@@ -9,4 +9,14 @@ class Photo extends Model
 {
     /** @use HasFactory<\Database\Factories\PhotoFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'url',
+        'workorder_id',
+    ];
+
+    public function workorder()
+    {
+        return $this->belongsTo(Workorder::class);
+    }
 }
