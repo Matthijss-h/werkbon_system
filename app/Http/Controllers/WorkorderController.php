@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Werkbon;
+use App\Models\Workorder;
 use Illuminate\Http\Request;
 
-class WerkbonController extends Controller
+class WorkorderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($status = 'open')
     {
-        //
+        return view('workorders.index', compact('status'));
     }
 
     /**
@@ -34,7 +34,7 @@ class WerkbonController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Werkbon $werkbon)
+    public function show(Workorder $workorder)
     {
         //
     }
@@ -42,7 +42,7 @@ class WerkbonController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Werkbon $werkbon)
+    public function edit(Workorder $workorder)
     {
         //
     }
@@ -50,7 +50,7 @@ class WerkbonController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Werkbon $werkbon)
+    public function update(Request $request, Workorder $workorder)
     {
         //
     }
@@ -58,7 +58,7 @@ class WerkbonController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Werkbon $werkbon)
+    public function destroy(Workorder $workorder)
     {
         //
     }

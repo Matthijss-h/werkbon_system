@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Werkbon extends Model
+class Workorder extends Model
 {
-    /** @use HasFactory<\Database\Factories\WerkbonFactory> */
+    /** @use HasFactory<\Database\Factories\WorkorderFactory> */
     use HasFactory;
 }
