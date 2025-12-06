@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         Workorder::factory()
-            ->count(5)
+            ->count(10)
             ->hasPhotos(3)
             ->hasMaterials(4)
             ->create();

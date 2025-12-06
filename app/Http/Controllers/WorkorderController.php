@@ -36,10 +36,13 @@ class WorkorderController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Workorder $workorder)
-    {
-        //
-    }
+public function show(Workorder $workorder)
+{
+    // Load the relationships
+    $workorder->load(['photos', 'materials']);
+    
+    return view('workorders.show', compact('workorder'));
+}
 
     /**
      * Show the form for editing the specified resource.

@@ -15,7 +15,7 @@
         <div class="nav-wrapper">
             <a href="/" class="brand-logo" style="margin-left: 15px;">Werkbonnen</a>
             <ul class="right ">
-                <li><a href="{{ route('workorders.create') }}" class="waves-effect waves-light btn indigo">Nieuwe Werkbon<i
+                <li><a class="waves-effect waves-light btn indigo">Nieuwe Werkbon<i
                             class="material-icons left">add</i></a></li>
             </ul>
         </div>

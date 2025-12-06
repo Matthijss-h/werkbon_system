@@ -10,3 +10,6 @@ Route::get('/', function () {
 Route::get('/workorders/{status}', [WorkorderController::class, 'index'])
     ->where('status', 'open|closed')
     ->name('workorders.index');
+
+Route::get('/workorder/{workorder}', [WorkorderController::class, 'show'])
+    ->name('workorders.show');

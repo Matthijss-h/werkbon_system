@@ -30,7 +30,7 @@
                         <div class="card-action">
                             <div class="row" style="margin-bottom: 0;">
                                 <div class="col s6 center">
-                                    <a href="" class="waves-effect waves-light btn blue">
+                                    <a href="{{ route('workorders.show', $workorder) }}" class="waves-effect waves-light btn blue">
                                         <i class="material-icons left">visibility</i>Bekijken
                                     </a>
                                 </div>
