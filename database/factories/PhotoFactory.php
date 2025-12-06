@@ -18,7 +18,6 @@ class PhotoFactory extends Factory
     {
         return [
             'url' => $this->faker->imageUrl(),
-            
         ];
     }
 }
