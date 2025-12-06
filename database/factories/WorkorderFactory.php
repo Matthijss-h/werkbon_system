@@ -9,18 +9,16 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class WorkorderFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
+        $start = $this->faker->dateTime();
+        $end = $this->faker->dateTimeBetween($start, (clone $start)->modify('+1 month'));
+
         return [
             'employee_name' => $this->faker->name(),
             'description' => $this->faker->paragraph(),
-            'start' => $this->faker->date('d-M-Y'),
-            'end' => $this->faker->date('d-M-Y'),
+            'start' => $start->format('d-M-Y H:i:s'),
+            'end' => $end->format('d-M-Y H:i:s'),
             'status' => $this->faker->randomElement(['open', 'closed']),
             'created_at' => now(),
             'updated_at' => now(),

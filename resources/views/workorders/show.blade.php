@@ -19,10 +19,10 @@
                         <div class="card-action">
                             <div class="row" style="margin-bottom: 0;">
                                 <div class="col s6 center white-text">
-                                    <i class="material-icons left">calendar_today</i>Start datum: {{ $workorder->start }}
+                                    <i class="material-icons left">calendar_today</i><strong>Start datum & tijd: </strong>{{ $workorder->start }}
                                 </div>
                                 <div class="col s6 center white-text">
-                                    <i class="material-icons left">calendar_today</i>Eind datum: {{ $workorder->end }}
+                                    <i class="material-icons left">calendar_today</i><strong>Eind datum & tijd: </strong>{{ $workorder->end }}
                                 </div>
                             </div>
                         </div>

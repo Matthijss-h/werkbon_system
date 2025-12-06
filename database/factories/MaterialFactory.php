@@ -19,6 +19,7 @@ class MaterialFactory extends Factory
         return [
             'name' => $this->faker->word(),
             'quantity' => $this->faker->numberBetween(1, 100),
+            'workorder_id' => random_int(1, 10),
         ];
     }
 }

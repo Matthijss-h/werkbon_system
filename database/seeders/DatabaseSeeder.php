@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Workorder;
+use App\Models\Material;
+use App\Models\Photo;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,10 +25,9 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Workorder::factory()
-            ->count(10)
-            ->hasPhotos(3)
-            ->hasMaterials(4)
-            ->create();
+        Workorder::factory(10)->create();
+        Material::factory(50)->create();
+        Photo::factory(30)->create();
+
     }
 }
