@@ -17,8 +17,8 @@ class WorkorderFactory extends Factory
         return [
             'employee_name' => $this->faker->name(),
             'description' => $this->faker->paragraph(),
-            'start' => $start->format('d-M-Y H:i:s'),
-            'end' => $end->format('d-M-Y H:i:s'),
+            'start' => $start->format('d-m-Y H:i:s'),
+            'end' => $end->format('d-m-Y H:i:s'),
             'status' => $this->faker->randomElement(['open', 'closed']),
             'created_at' => now(),
             'updated_at' => now(),
