@@ -61,6 +61,17 @@ class WorkorderController extends Controller
     }
 
     /**
+    * Mark the workorder as completed.
+    */
+    public function complete(Workorder $workorder)
+    {
+        $workorder->update(['status' => 'closed']);
+    
+        return redirect()->route('workorders.index', 'open')
+            ->with('success', 'Werkbon succesvol afgerond!');
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Workorder $workorder)

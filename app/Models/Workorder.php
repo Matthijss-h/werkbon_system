@@ -15,6 +15,7 @@ class Workorder extends Model
         'description',
         'start',
         'end',
+        'status',
     ];
 
     public function photos()

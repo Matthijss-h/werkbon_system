@@ -36,9 +36,13 @@
                                 </div>
                                 @if ($workorder->status === 'open')
                                 <div class="col s6 center">
-                                    <a href="" class="waves-effect waves-light btn green darken-1">
-                                        <i class="material-icons left">check</i>Afronden
-                                    </a>
+<form action="{{ route('workorders.complete', $workorder) }}" method="POST" style="display: inline;">
+    @csrf
+    @method('PATCH')
+    <button type="submit" class="waves-effect waves-light btn green darken-1">
+        <i class="material-icons left">check</i>Afronden
+    </button>
+</form>
                                 </div>
                                 @endif
                             </div>
