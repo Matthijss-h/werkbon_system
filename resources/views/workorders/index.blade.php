@@ -29,16 +29,18 @@
                         </div>
                         <div class="card-action">
                             <div class="row" style="margin-bottom: 0;">
-                                <div class="col s6 center">
+                                <div class="col s6 center {{ $workorder->status === 'open' ? '' : 's12' }}">
                                     <a href="{{ route('workorders.show', $workorder) }}" class="waves-effect waves-light btn blue">
                                         <i class="material-icons left">visibility</i>Bekijken
                                     </a>
                                 </div>
+                                @if ($workorder->status === 'open')
                                 <div class="col s6 center">
                                     <a href="" class="waves-effect waves-light btn green darken-1">
                                         <i class="material-icons left">check</i>Afronden
                                     </a>
                                 </div>
+                                @endif
                             </div>
                         </div>
                     </div>
