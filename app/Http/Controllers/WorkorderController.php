@@ -30,7 +30,25 @@ class WorkorderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the incoming data
+        $validated = $request->validate([
+            'employee_name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'start_date' => 'required|date_format:d-m-Y',
+            'end_date' => 'required|date_format:d-m-Y|after_or_equal:start_date',
+    ]);
+
+        // Create the workorder
+        Workorder::create([
+            'employee_name' => $validated['employee_name'],
+            'description' => $validated['description'],
+            'start' => $validated['start_date'],
+            'end' => $validated['end_date'],
+            'status' => 'open',
+        ]);
+
+
+        return redirect()->route('workorders.index', 'open');
     }
 
     /**
@@ -67,8 +85,7 @@ class WorkorderController extends Controller
     {
         $workorder->update(['status' => 'closed']);
     
-        return redirect()->route('workorders.index', 'open')
-            ->with('success', 'Werkbon succesvol afgerond!');
+        return redirect()->route('workorders.index', 'open');
     }
 
     /**
