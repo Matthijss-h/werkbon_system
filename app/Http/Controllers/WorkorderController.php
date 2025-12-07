@@ -22,7 +22,7 @@ class WorkorderController extends Controller
      */
     public function create()
     {
-        //
+        return view('workorders.create');
     }
 
     /**
