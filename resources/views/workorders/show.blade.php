@@ -67,7 +67,10 @@
                                 <div class="col s12 m6 l4">
                                     <div class="card">
                                         <div class="card-image">
-                                            <img src="{{ asset('storage/' . $photo->url) }}" alt="Werkbon foto">
+                                            <img src="{{ Str::startsWith($photo->url, ['http://', 'https://']) 
+                                                ? $photo->url 
+                                                : asset('storage/' . $photo->url) }}" 
+                                                alt="Werkbon foto">
                                         </div>
                                     </div>
                                 </div>
