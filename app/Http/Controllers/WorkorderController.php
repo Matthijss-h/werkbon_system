@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Workorder;
+use App\Models\Material;
+use App\Models\Photo;
 use Illuminate\Http\Request;
 
 class WorkorderController extends Controller
@@ -36,15 +38,32 @@ class WorkorderController extends Controller
             'description' => 'required|string',
             'start_date' => 'required|date_format:d-m-Y',
             'end_date' => 'required|date_format:d-m-Y|after_or_equal:start_date',
+            'material_name' => 'required|string|max:255',
+            'material_quantity' => 'required|integer|min:1',
+            'photo' => 'required|image|max:2048',
     ]);
 
+        $photoPath = $request->file('photo')->store('workorders/photos', 'public');
+
         // Create the workorder
-        Workorder::create([
+        $workorder = Workorder::create([
             'employee_name' => $validated['employee_name'],
             'description' => $validated['description'],
             'start' => $validated['start_date'],
             'end' => $validated['end_date'],
+            'photo' => $photoPath,
             'status' => 'open',
+        ]);
+
+        Material::create([
+            'name' => $validated['material_name'],
+            'quantity' => $validated['material_quantity'],
+            'workorder_id' => $workorder->id,
+        ]);
+
+        Photo::create([
+            'url' => $photoPath,
+            'workorder_id' => $workorder->id,
         ]);
 
 

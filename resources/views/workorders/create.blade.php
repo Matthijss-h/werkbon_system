@@ -62,25 +62,25 @@
                                     {{-- Material name --}}
                                     <div class="col s6">
                                         <input type="text" id="material_name" name="material_name"
-                                            placeholder="Materiaal naam" class="white-text" disabled>
+                                            placeholder="Materiaal naam" class="white-text">
                                     </div>
                                     {{-- Material quantity --}}
                                     <div class="col s6">
                                         <input type="number" id="material_quantity" name="material_quantity"
-                                            placeholder="Aantal" class="white-text" disabled>
+                                            placeholder="Aantal" class="white-text">
                                     </div>
                                 </div>
                             </div>
 
                             {{-- Add material button --}}
                             <div class="col s4 m3">
-                                <a class="btn-floating" disabled><i class="material-icons">add</i></a>
+                                <a class="btn-floating"><i class="material-icons">add</i></a>
                             </div>
                         </div>
 
                         {{-- Photo upload input --}}
                         <i class="material-icons left">photo</i>Foto toevoegen:
-                        <input type="file" id="photo" name="photo" accept="image/*" class="white-text" disabled>
+                        <input type="file" id="photo" name="photo" accept="image/*" class="white-text">
                     </div> 
 
                     {{-- Form action buttons --}}
