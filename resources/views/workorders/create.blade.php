@@ -55,26 +55,28 @@
                         </div>
 
                         {{-- Materials input row --}}
-                        <div class="row">
-                            {{-- Material name and quantity inputs --}}
-                            <div class="col s8 m9">
-                                <div class="row" style="margin-bottom: 0;">
-                                    {{-- Material name --}}
-                                    <div class="col s6">
-                                        <input type="text" id="material_name" name="material_name"
-                                            placeholder="Materiaal naam" class="white-text">
-                                    </div>
-                                    {{-- Material quantity --}}
-                                    <div class="col s6">
-                                        <input type="number" id="material_quantity" name="material_quantity"
-                                            placeholder="Aantal" class="white-text">
+                        <div id="materials_section">
+                            <div id="materials_1" class="row">
+                                {{-- Material name and quantity inputs --}}
+                                <div class="col s8 m9">
+                                    <div class="row" style="margin-bottom: 0;">
+                                        {{-- Material name --}}
+                                        <div class="col s6">
+                                            <input type="text" name="material_name[]"
+                                                placeholder="Materiaal naam" class="white-text">
+                                        </div>
+                                        {{-- Material quantity --}}
+                                        <div class="col s6">
+                                            <input type="number" name="material_quantity[]"
+                                                placeholder="Aantal" class="white-text">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            {{-- Add material button --}}
-                            <div class="col s4 m3">
-                                <a class="btn-floating"><i class="material-icons">add</i></a>
+    
+                                {{-- Add material button --}}
+                                <div id="add_material_btn_div" class="col s4 m3">
+                                    <a class="btn-floating" id="add_material_btn"><i class="material-icons">add</i></a>
+                                </div>
                             </div>
                         </div>
 
@@ -107,10 +109,16 @@
         </form>
 
         <script>
+            let addedMaterialsButton = document.querySelector('#add_material_btn');
+            let materialsSection = document.querySelector('#materials_section');
+            let countMaterialInputs = materialsSection.childElementCount;
+            
             // Initialize Materialize datepicker when page loads
             document.addEventListener('DOMContentLoaded', function() {
                 // Select all datepicker elements
                 var elems = document.querySelectorAll('.datepicker');
+
+                addedMaterialsButton.addEventListener('click', addMaterialButtonClick);
 
                 // Configure datepicker options with Dutch localization
                 var options = {
@@ -135,5 +143,83 @@
                 // Initialize datepicker on all selected elements
                 M.Datepicker.init(elems, options);
             });
+
+            function addMaterialButtonClick(e) {
+                    e.preventDefault();
+                    
+                    countMaterialInputs = materialsSection.childElementCount;
+                    
+                    // Create a new row for material inputs
+                    let newMaterialRow = document.createElement('div');
+                    newMaterialRow.classList.add('row');
+                    newMaterialRow.style.marginBottom = '0';
+                    newMaterialRow.id = `materials_${countMaterialInputs + 1}`;
+
+                    // Create material_inputs div
+                    let materialsInputsDiv = document.createElement('div');
+                    materialsInputsDiv.classList.add('col', 's8', 'm9');
+
+                    // Create inner row div
+                    let innerRowDiv = document.createElement('div');
+                    innerRowDiv.classList.add('row');
+                    innerRowDiv.style.marginBottom = '0';
+
+                    // Create material name and quantity divs and inputs
+                    let materialNameDiv = document.createElement('div');
+                    materialNameDiv.classList.add('col', 's6');
+                    let materialQuantityDiv = document.createElement('div');
+                    materialQuantityDiv.classList.add('col', 's6');
+                    let materialNameInput = document.createElement('input');
+                    materialNameInput.type = 'text';
+                    materialNameInput.name = 'material_name[]';
+                    materialNameInput.placeholder = 'Materiaal naam';
+                    materialNameInput.classList.add('white-text');
+                    let materialQuantityInput = document.createElement('input');
+                    materialQuantityInput.type = 'number';
+                    materialQuantityInput.name = 'material_quantity[]';
+                    materialQuantityInput.placeholder = 'Aantal';
+                    materialQuantityInput.classList.add('white-text');
+
+                    // Remove add button from previous row
+                    let previousRowDiv = document.querySelector(
+                        `#materials_${countMaterialInputs}`);
+                    previousRowDiv.removeChild(previousRowDiv.children[1]);
+
+                    // Append inputs to their respective divs
+                    materialNameDiv.appendChild(materialNameInput);
+                    materialQuantityDiv.appendChild(materialQuantityInput);
+
+                    // Append material name and quantity divs to inner row
+                    innerRowDiv.appendChild(materialNameDiv);
+                    innerRowDiv.appendChild(materialQuantityDiv);
+
+                    // Append inner row to materialsInputsDiv
+                    materialsInputsDiv.appendChild(innerRowDiv);
+
+                    // Create add material button div
+                    let addMaterialButtonDiv = document.createElement('div');
+                    addMaterialButtonDiv.id = 'add_material_btn_div';
+                    addMaterialButtonDiv.classList.add('col', 's4', 'm3');
+                    let addMaterialButton = document.createElement('a');
+                    addMaterialButton.classList.add('btn-floating');
+                    addMaterialButton.id = 'add_material_btn';
+                    let addIcon = document.createElement('i');  
+                    addIcon.classList.add('material-icons');
+                    addIcon.textContent = 'add';
+                    addMaterialButton.appendChild(addIcon);
+                    addMaterialButtonDiv.appendChild(addMaterialButton);
+
+                    // Append materialsInputsDiv and add button div to new row
+                    newMaterialRow.appendChild(materialsInputsDiv);
+                    newMaterialRow.appendChild(addMaterialButtonDiv);
+
+                    // Append the new row to the materials section
+                    materialsSection.appendChild(newMaterialRow);
+
+                    // Renew event listener for the new add button
+                    addedMaterialsButton = document.querySelector('#add_material_btn');
+                    addedMaterialsButton.addEventListener('click', addMaterialButtonClick);
+                }
+
         </script>
 </x-layout>
