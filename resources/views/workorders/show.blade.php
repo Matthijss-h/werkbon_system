@@ -67,7 +67,7 @@
                                 <div class="col s12 m6 l4">
                                     <div class="card">
                                         <div class="card-image">
-                                            <img src="{{ $photo->url }}" alt="Werkbon foto">
+                                            <img src="{{ asset('storage/' . $photo->url) }}" alt="Werkbon foto">
                                         </div>
                                     </div>
                                 </div>
